@@ -1,6 +1,5 @@
 package br.com.kriger.cursomc.resources;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.kriger.cursomc.domain.Categoria;
 import br.com.kriger.cursomc.services.CategoriaService;
-
 
 @RestController
 @RequestMapping (value="/categorias")
