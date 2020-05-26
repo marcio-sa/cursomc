@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.kriger.cursomc.domain.Categoria;
+import br.com.kriger.cursomc.domain.Cidade;
+import br.com.kriger.cursomc.domain.Estado;
 import br.com.kriger.cursomc.domain.Produto;
 import br.com.kriger.cursomc.repositories.CategoriaRepository;
+import br.com.kriger.cursomc.repositories.CidadeRepository;
+import br.com.kriger.cursomc.repositories.EstadoRepository;
 import br.com.kriger.cursomc.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -19,6 +23,10 @@ public class CursomcApplication implements CommandLineRunner {
 	private CategoriaRepository categoriaRepository;
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private EstadoRepository estadoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -41,8 +49,19 @@ public class CursomcApplication implements CommandLineRunner {
 		produto3.getCategorias().addAll(Arrays.asList(categoria1));
 
 		categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2));
-		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));		
+		produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3));
+		
 
+		
+		Estado estado1 = new Estado("Minas Gerais");
+		Estado estado2 = new Estado("São Paulo");
+		
+		Cidade cidade1 = new Cidade("Uberlândia", estado1);
+		Cidade cidade2 = new Cidade("São Paulo", estado2);
+		Cidade cidade3 = new Cidade("Campinas", estado2);
+		
+		estadoRepository.saveAll(Arrays.asList(estado1, estado2));
+		cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));
 	}
 
 }
